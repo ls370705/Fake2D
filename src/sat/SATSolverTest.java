@@ -1,23 +1,14 @@
 package sat;
 
-import com.sun.jdi.event.ClassUnloadEvent;
-
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
-import java.io.IOError;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import sat.env.Bool;
 import sat.env.Environment;
 import sat.env.Variable;
 import sat.formula.Clause;
@@ -25,7 +16,6 @@ import sat.formula.Formula;
 import sat.formula.Literal;
 import sat.formula.NegLiteral;
 import sat.formula.PosLiteral;
-import sudoku.Main;
 
 public class SATSolverTest {
     Literal a = PosLiteral.make("a");
@@ -151,7 +141,7 @@ public class SATSolverTest {
     }
 
 	public static void main(String[] args){
-		File file = new File("/Users/liusu/Desktop/s8Sat.cnf");
+		File file = new File("D:/Fake2D/largeSat.cnf");
 		BufferedReader reader = null;
 		List<Clause> clauses = new ArrayList<Clause>();
 		List<Variable> variables = new ArrayList<>();
@@ -166,6 +156,7 @@ public class SATSolverTest {
 			while ((temp = reader.readLine()) != null) {
 				if(line == 2){
 					String[] info = temp.split(" ");
+					//System.out.println(info[2]);
 					numberOfVariables = Integer.parseInt(info[2]);
 //					numberOfClauses = Integer.parseInt(info[3]);
 					for(int i = 1 ; i < numberOfVariables + 1 ; i++){
